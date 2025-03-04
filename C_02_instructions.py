@@ -1,19 +1,28 @@
 # checks users enter yes (y) or no (n)
 
 
-def yes_no(question):
-    """Checks user response to a question is yes / no (y/n), returns 'yes' or 'no' """
-    while True:
-        response = input(question).lower()
+def string_checker(question, valid_ans=("yes", "no")):
 
-        # checks user response, question
-        # repeats if users don't enter yes / no
-        if response == "yes" or response == "y":
-            return "yes"
-        elif response == "no" or response == "n":
-            return "no"
-        else:
-            print("please enter yes/no")
+    error = f"Please enter a valid option from the following list: {valid_ans}"
+
+    while True:
+
+        # Get user response and make sure its lowercase
+        user_response = input(question).lower()
+
+        for item in valid_ans:
+         # check if the user response is a word in the list
+            if item == user_response:
+                return item
+
+           # check if the user response is the same as
+           # the first letter of an item in the list
+            elif user_response == item[0]:
+                 return item
+
+            # print error if user does not enter something that is valid
+            print(error)
+            print()
 
 def instructions():
     """"prints instructions"""
@@ -21,13 +30,17 @@ def instructions():
     print("""
     *** Instructions ***
     
-Roll the dice and try to win
+Then played against the computer. you need to choose R (rock), P (paper), or S (scissors).
         """)
 
 
 # Main routine
+print()
+print("💎📃✂️ Rock / Paper / Scissors Game ✂️📃💎")
+print()
+
 # ask the user if they want instructions (check they say yes / no)
-want_instructions = yes_no("Do you want see the instructions? ")
+want_instructions = string_checker("Do you want see the instructions? ")
 # Display the instructions if the user wants to see them...
 if want_instructions == "yes":
     instructions()
