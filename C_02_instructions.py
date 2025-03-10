@@ -24,6 +24,8 @@ def string_checker(question, valid_ans=("yes", "no")):
             print(error)
             print()
 
+
+# Displays instructions
 def instructions():
     """"prints instructions"""
 
@@ -39,12 +41,12 @@ print()
 print("💎📃✂️ Rock / Paper / Scissors Game ✂️📃💎")
 print()
 
-# ask the user if they want instructions (check they say yes / no)
+# ask the user if they want instructions and display
+# them if requested
 want_instructions = string_checker("Do you want see the instructions? ")
-# Display the instructions if the user wants to see them...
+
+# check users enter yes (y) or no (n)
 if want_instructions == "yes":
     instructions()
 
-
-print()
 print("Program continues")
